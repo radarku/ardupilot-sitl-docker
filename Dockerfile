@@ -40,6 +40,8 @@ RUN USER=nobody Tools/scripts/install-prereqs-ubuntu.sh -y
 RUN ./waf distclean
 RUN ./waf configure --board sitl
 RUN ./waf copter
+RUN ./waf rover 
+RUN ./waf plane
 
 EXPOSE 5760
 CMD ["/ardupilot/build/sitl/bin/arducopter", "-S", "-I0", "--home", "-35.363261,149.165230,584,353", "-w", "--model", "+", "--speedup", "1", "--defaults", "/ardupilot/Tools/autotest/default_params/copter.parm"]
