@@ -16,7 +16,7 @@ To download it, simply:
  
 and to run it:
 
-`docker run -p 5760:5760 radarku/ardupilot-sitl`
+`docker run -it -p 5760:5760 radarku/ardupilot-sitl`
 
 
 Quick Start
@@ -28,7 +28,7 @@ If you'd rather build the docker image yourself:
 
 To run the image:
 
-`docker run -p 5760:5760 ardupilot`
+`docker run -it -p 5760:5760 ardupilot`
 
 This will start an ArduCopter SITL on host TCP port 5760, so to connect to it from the host, you could:
 
@@ -39,11 +39,11 @@ Options
 
 There are a number of options available to configure the simulator, for example, to run an ArduRover instance on port 5761, you could:
 
-`docker run -p 5761:5760 --env VEHICLE=ardurover ardupilot`
+`docker run -it -p 5761:5760 --env VEHICLE=ardurover ardupilot`
 
 We also have an example `env.list` file which can help you maintain your options and called like so:
 
-`docker run -p 5761:5760 --env-file env.list ardupilot`
+`docker run -it -p 5761:5760 --env-file env.list ardupilot`
 
 The full list of options and their default values is:
 
@@ -61,7 +61,7 @@ VEHICLE     arducopter
 So, for example, you could issue a command such as:
 
 ```
-docker run -p 5761:5760 \
+docker run -it -p 5761:5760 \
    --env VEHICLE=ardurover \
    --env MODEL=rover-skid \
    --env LAT=39.9656 \
