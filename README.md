@@ -3,18 +3,34 @@ ArduPilot Software-in-the-Loop Simulator Docker Container
 
 The purpose of this is to run an ArduPilot SITL from within Docker.
 
+DockerHub
+---------
+
+A pre-built Docker image is available on DockerHub at:
+
+https://hub.docker.com/r/radarku/ardupilot-sitl
+
+To download it, simply:
+
+`docker pull radarku/ardupilot-sitl`
+ 
+and to run it:
+
+`docker run -p 5760:5760 radarku/ardupilot-sitl`
+
+
 Quick Start
 -----------
 
-To build a docker image:
+If you'd rather build the docker image yourself:
 
-`docker build --tag ardupilot-sitl-docker github.com/radarku/ardupilot-sitl-docker`
+`docker build --tag ardupilot github.com/radarku/ardupilot-sitl-docker`
 
 To run the image:
 
 `docker run -p 5760:5760 ardupilot`
 
-This will start an ArduCopter SITL on host TCP port 5761, so to connect to it from the host, you could:
+This will start an ArduCopter SITL on host TCP port 5760, so to connect to it from the host, you could:
 
 `mavproxy.py --master=tcp:localhost:5760`
 
@@ -42,16 +58,29 @@ SPEEDUP     1
 VEHICLE     arducopter
 ```
 
+So, for example, you could issue a command such as:
+
+```
+docker run -p 5761:5760 \
+   --env VEHICLE=ardurover \
+   --env MODEL=rover-skid \
+   --env LAT=39.9656 \
+   --env LON=-75.1810 \
+   --env ALT=276 \
+   --env DIR=180 \
+   --env SPEEDUP=2 \
+   ardupilot
+```
+
 Vehicles and their corresponding models are listed below:
 
 ```
-ArduCopter: octa-quad|tri|singlecopter|firefly|gazebo-
+arducopter: octa-quad|tri|singlecopter|firefly|gazebo-
     iris|calibration|hexa|heli|+|heli-compound|dodeca-
     hexa|heli-dual|coaxcopter|X|quad|y6|IrisRos|octa
-AntennaTracker: tracker
-APMrover2: rover|gazebo-rover|rover-skid|calibration
-ArduSub: vectored
-ArduPlane: gazebo-zephyr|CRRCSim|last_letter|plane-
+ardurover: rover|gazebo-rover|rover-skid|calibration
+ardusub: vectored
+arduplane: gazebo-zephyr|CRRCSim|last_letter|plane-
     vtail|plane|quadplane-tilttri|quadplane|quadplane-
     tilttrivec|calibration|plane-elevon|plane-
     tailsitter|plane-dspoilers|quadplane-tri
