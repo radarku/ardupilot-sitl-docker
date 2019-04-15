@@ -39,7 +39,7 @@ Options
 
 There are a number of options available to configure the simulator, for example, to run an ArduRover instance on port 5761, you could:
 
-`docker run -it --rm -p 5761:5760 --env VEHICLE=ardurover ardupilot`
+`docker run -it --rm -p 5761:5760 --env VEHICLE=APMRover2 ardupilot`
 
 We also have an example `env.list` file which can help you maintain your options and called like so:
 
@@ -62,7 +62,7 @@ So, for example, you could issue a command such as:
 
 ```
 docker run -it --rm -p 5761:5760 \
-   --env VEHICLE=ardurover \
+   --env VEHICLE=APMRover2 \
    --env MODEL=rover-skid \
    --env LAT=39.9656 \
    --env LON=-75.1810 \
@@ -75,12 +75,12 @@ docker run -it --rm -p 5761:5760 \
 Vehicles and their corresponding models are listed below:
 
 ```
-arducopter: octa-quad|tri|singlecopter|firefly|gazebo-
+ArduCopter: octa-quad|tri|singlecopter|firefly|gazebo-
     iris|calibration|hexa|heli|+|heli-compound|dodeca-
     hexa|heli-dual|coaxcopter|X|quad|y6|IrisRos|octa
-ardurover: rover|gazebo-rover|rover-skid|calibration
-ardusub: vectored
-arduplane: gazebo-zephyr|CRRCSim|last_letter|plane-
+APMRover2: rover|gazebo-rover|rover-skid|calibration
+ArduSub: vectored
+ArduPlane: gazebo-zephyr|CRRCSim|last_letter|plane-
     vtail|plane|quadplane-tilttri|quadplane|quadplane-
     tilttrivec|calibration|plane-elevon|plane-
     tailsitter|plane-dspoilers|quadplane-tri

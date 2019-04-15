@@ -46,4 +46,4 @@ ENV SPEEDUP 1
 ENV VEHICLE arducopter
 
 # Finally the command
-ENTRYPOINT /ardupilot/build/sitl/bin/${VEHICLE} -S -I${INSTANCE} --home ${LAT},${LON},${ALT},${DIR} -w --model ${MODEL} --speedup ${SPEEDUP} --defaults /ardupilot/Tools/autotest/default_params/copter.parm
+ENTRYPOINT /ardupilot/Tools/autotest/sim_vehicle.py --vehicle ${VEHICLE} -I${INSTANCE} --custom-location=${LAT},${LON},${ALT},${DIR} -w --frame ${MODEL} --no-rebuild --no-mavproxy --speedup ${SPEEDUP}
