@@ -43,7 +43,7 @@ ENV ALT 14
 ENV DIR 270
 ENV MODEL +
 ENV SPEEDUP 1
-ENV VEHICLE arducopter
+ENV VEHICLE ArduCopter
 
 # Finally the command
 ENTRYPOINT /ardupilot/Tools/autotest/sim_vehicle.py --vehicle ${VEHICLE} -I${INSTANCE} --custom-location=${LAT},${LON},${ALT},${DIR} -w --frame ${MODEL} --no-rebuild --no-mavproxy --speedup ${SPEEDUP}
