@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ARG COPTER_TAG=Copter-4.0.3
+
 # install git 
 RUN apt-get update && apt-get install -y git
 
@@ -8,7 +10,7 @@ RUN git clone https://github.com/ArduPilot/ardupilot.git ardupilot
 WORKDIR ardupilot
 
 # Checkout the latest Copter...
-RUN git checkout Copter-4.0.3
+RUN git checkout ${COPTER_TAG}
 
 # Now start build instructions from http://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html
 RUN git submodule update --init --recursive
