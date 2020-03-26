@@ -26,6 +26,13 @@ If you'd rather build the docker image yourself:
 
 `docker build --tag ardupilot github.com/radarku/ardupilot-sitl-docker`
 
+You can now use the `--build-arg` option to specify which branch or tag in the ardupilot
+repository you'd like to use. Here's an example:
+
+`docker build --tag ardupilot --build-arg COPTER_TAG=Copter-4.0.1 github.com/radarku/ardupilot-sitl-docker`
+
+If no COPTER_TAG is supplied, the build will use the default defined in the Dockerfile, currently set at Copter-4.0.3
+
 To run the image:
 
 `docker run -it --rm -p 5760:5760 ardupilot`
