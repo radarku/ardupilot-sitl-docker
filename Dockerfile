@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 ARG COPTER_TAG=Copter-4.0.3
 
