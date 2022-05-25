@@ -10,14 +10,21 @@ A pre-built Docker image is available on DockerHub at:
 
 https://hub.docker.com/r/radarku/ardupilot-sitl
 
-To download it, simply:
+- To download it, run `docker pull radarku/ardupilot-sitl`
+- To run it, run `docker run -it --rm -p 5760:5760 radarku/ardupilot-sitl`
+- To use it with [Docker Compose](https://docs.docker.com/compose/), add the following service to your `docker-compose.yml` file:
+    - You can launch it with `docker-compose up -d`
+    - If you update your `docker-compose.yml`, you can restart your container by running `docker-compose up -d` without getting the container ID and killing the container manually. See https://github.com/radarku/ardupilot-sitl-docker/issues/3
 
-`docker pull radarku/ardupilot-sitl`
- 
-and to run it:
-
-`docker run -it --rm -p 5760:5760 radarku/ardupilot-sitl`
-
+```yml
+services:
+  ardupilot-sitl:
+    image: radarku/ardupilot-sitl
+    platform: linux/amd64
+    tty: true
+    ports:
+      - 5760:5760
+```
 
 Quick Start
 -----------
