@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ARG COPTER_TAG=Copter-4.0.3
 
 # install git 
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git; git config --global url."https://github.com/".insteadOf git://github.com/
 
 # Now grab ArduPilot from GitHub
 RUN git clone https://github.com/ArduPilot/ardupilot.git ardupilot
