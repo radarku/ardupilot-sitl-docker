@@ -16,3 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ardupilot-sitl:$(date +%s)
+    - name: DockerHub Login
+      env:
+        DOCKERHUB_USER: radarku
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_SECRET }}
+      run: docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+    - name: Push to DockerHub
+      run: docker push radarku/ardupilot-sitl:${{ github.sha }}
